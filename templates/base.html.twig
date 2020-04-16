@@ -1,12 +1,185 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Bootstrap4">
+    <meta name="keywords" content="HTML,CSS,JavaScript">
+    <meta name="author" content="Álvaro de Moral">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<title>{% block titulo %}Techno Market{% endblock %}</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div style="padding-right: 20px;">
+            <a class="navbar-brand" href="/">
+                <img src="imagenes/logo.png" weight="70" height="70" alt="logo">
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/productos">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/servicios">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contacto">Contacto</a>
+                </li>
+                <li class="nav-item dropdown">
+                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                 aria-haspopup="true" aria-expanded="false">
+                 <i class="fas fa-user"></i>
+                 </a>
+                <div class="dropdown-menu">
+  <form class="px-4 py-3">
+    <div class="form-group">
+      <label for="exampleDropdownFormEmail1">Correo electrónico</label>
+      <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="Correo electrónico">
+    </div>
+    <div class="form-group">
+      <label for="exampleDropdownFormPassword1">Contraseña</label>
+      <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Contraseña">
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="dropdownCheck">
+      <label class="form-check-label" for="dropdownCheck">
+        Recordarme
+      </label>
+    </div>
+    </br>
+    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+  </form>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item" href="#">¿Eres nuevo aquí? <span style="color:blue">Regístrate</span></a>
+  <a class="dropdown-item" href="https://support.google.com/accounts/answer/7682439?hl=es">
+  <span style="color:blue">¿Has olvidado tu contraseña?</span></a>
+</div>
+      </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+        </div>
+    </nav>
+
+       {% block body %}{% endblock %}
+
+    <!-- Footer -->
+    <div class="footer">
+        <br>
+        <div class="txtFooter">
+            <h3>¡Recibe los mejores descuentos!</h3>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                    </div>
+                    <div class="col">
+                        <form class="form-inline mt-2 mt-md-0">
+                            <input class="form-control mr-sm-2" type="email" placeholder="Correo electrónico"
+                                aria-label="Correo electrónico">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Enviar</button>
+                        </form>
+                    </div>
+                    <div class="col">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <p>Puedes darte de baja en cualquier momento</p>
+            <br>
+        </div>
+        <div class="pie">
+            <br>
+            <a href="/">| NOSOTROS |</a>
+            <a href="/contacto">CONTACTO |</a>
+            <a href="#">POLITICA DE PRIVACIDAD |</a>
+            <a data-toggle="modal" data-target="#exampleModalLong">AVISO LEGAL |</a>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">AVISO LEGAL</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Teléfono: 954 024 209<br>
+                    Av Tomás Beviá, 11 - Planta Baja<br>
+                    Techno Market<br>
+                    <hr>
+                    En cumplimiento del artículo 10 de la Ley 34 / 2002, de 11 de julio, de Servicios de la Sociedad de
+                    la Información y Comercio Electrónico, el Titular expone sus datos identificativos. <br>
+                    La información facilitada es la vigente en el momento de su publicación.
+                    <br> <br>
+                    La finalidad del sitio Web URL es ofrecer los distintos productos más actuales de componentes
+                    informáticos que se muestran a partir del sitio web.
+                    <br> <br>
+                    La utilización del sitio Web le otorga la condición de Usuario, e implica la aceptación completa de
+                    todas las cláusulas y condiciones de uso incluidas en las páginas:
+                    <br> <br>
+                    • Aviso Legal <br>
+                    • Política de Privacidad <br>
+                    • Política de Cookies <br>
+                    <br>
+
+
+                    Si no estuviera conforme con todas y cada una de estas cláusulas y condiciones absténgase de
+                    utilizar este sitio Web.
+                    <br><br>
+
+                    El acceso a este sitio Web no supone, en modo alguno, el inicio de una relación comercial con el
+                    Titular.
+                    <br><br>
+
+                    A través de este sitio Web, el Titular le facilita el acceso y la utilización de diversos contenidos
+                    que el Titular o sus colaboradores han publicadon por medio de Internet.
+                    <br><br>
+
+                    A tal efecto, usted está obligado y comprometido a NO utilizar cualquiera de los contenidos del
+                    sitio Web con fines o efectos ilícitos, prohibidos en este Aviso Legal o por la legislación vigente,
+                    lesivos de los derechos e intereses de terceros, o que de cualquier forma puedan dañar, inutilizar,
+                    sobrecargar, deteriorar o impedir la normal utilización de los contenidos, los equipos informáticos
+                    o los documentos, archivos y toda clase de contenidos almacenados en cualquier equipo informático
+                    propios o contratados por el Titular, de otros usuarios o de cualquier usuario de Internet.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-success my-2 my-sm-0" data-dismiss="modal"
+                        type="button">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="vendors/js/jquery-3.4.1.min.js"></script>
+<script src="vendors/js/bootstrap.min.js"></script>
+<script src="vendors/js/jquery.validate.min.js"></script>
+<script src="vendors/js/popper.min.js"></script>
+
+
+
+
 </html>

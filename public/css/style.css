@@ -1,0 +1,191 @@
+
+.contenedor {
+	width: 100%;
+	max-width: 100%;
+
+}
+
+.titulo {
+	text-align: center;
+}
+
+.PanelHead {
+	display: none;
+	width: 100%;
+	height: auto;
+	padding-left: 2%;
+}
+
+.txtHead {
+	font-size: 80%;
+}
+
+
+.flex-wrapper{
+	display:flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content:space-around;
+}
+
+.BlackPanel {
+	width: 100%;
+	height: 22em;
+	background-color: black;
+	padding-top: 3%;
+}
+
+.panel1 {
+	width: 50%;
+}
+
+.texto1 {
+	color: #EAEDED;
+	width: 50%;
+	float: left;
+	margin-left: 25%;
+}
+
+#readMore {
+	color: black;
+	width: 75%;
+	background-color: #EAEDED;
+	font-size: 16px;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 3px 3px 3px;
+}
+
+.readMore:hover {
+	background-color: white;
+
+}
+
+.panel2 {
+	width: 50%;
+	color: #EAEDED;
+}
+
+.texto2 {
+	width: 50%;
+	color: #EAEDED;
+	margin-left: 25%;
+}
+
+
+.line {
+	margin-left: 10%;
+}
+
+.imagenMobile {
+	display: none;
+}
+
+.BlackPanelMobile {
+	display: none;
+}
+
+.footer{
+	text-align: center;
+	margin: auto;
+}
+
+.suscribe {
+	margin: auto;
+}
+
+.email {
+	border-radius: 3px 3px 3px;
+	padding-top: 3px;
+	padding-bottom: 8px;
+	padding-left: 4px;
+}
+
+.enviar {
+	background-color: #5499C7;
+	border-radius: 3px 3px 3px;
+	color: black;
+
+}
+
+.pie {
+	background-color: black;
+	padding-bottom: 2%;
+}
+
+.pie a {
+	color: #99A3A4;
+}
+
+.pie a:hover {
+	color: white;
+	text-decoration: none;
+}
+
+/* @media-query */
+
+@media screen and (min-width: 480px) {
+
+	.contenedor {
+		width: 100%;
+	}
+	nav ul {
+    	display: flex;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+
+.headTit {
+	background-color: white;
+	text-align: center;
+	font-size: 22px;
+	color: black;
+	text-shadow: 0 0 3px #EAEDED;
+}
+
+.PanelHead {
+  	display: auto;
+  }
+
+.navBar {
+	display: none;
+}
+
+.PanelImagenes {
+	display: none;
+}
+
+.imagenMobile {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.BlackPanel {
+	display: none;
+}
+
+.BlackPanelMobile {
+	padding: 2%;
+	display: block;
+	background-color: black;
+	width: 100%;
+	height: auto;
+	color: #EAEDED;
+	text-align: center;
+
+}
+
+.linea {
+	background-color: white;
+}
+
+.nosotros {
+	padding-top: 2%;
+}
+.menu-responsive {
+	display: block;
+}
+}

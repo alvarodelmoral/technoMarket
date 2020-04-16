@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+{% block titulo %}Productos - {{ parent() }}{% endblock %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Productos</li>
+  </ol>
+</nav>
+<div class = "container">
+  <h2>{{ordenador.Nombre}}</h2>
+    <p>{{ordenador.Procesador}}</p>
+    <p>{{ordenador.Memoria}}</p>
+    <p><strong>{{ordenador.Precio}}</strong></p>
+    <p><a href="{{ path('producto_editar', {'id' : ordenador.id}) }}">Editar Producto</a></p>
+    <p><a href="{{ path('producto_borrar', {'id' : ordenador.id}) }}">Borrar Producto</a></p>
+</div>
+</br></br>
+</br></br>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html.twig" %}
+{% block titulo %}Contacto - {{ parent() }}{% endblock %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Contacto</li>
+  </ol>
+</nav>
+<div class = "container">
+  <br />
+  <h2> Contáctanos </h2>
+  <p id = "subtitulo">
+    ¿Alguna duda? No dudes en contactar con nosotros o en mirar las dudas
+    frecuentes
+  </p>
+  <br />
+  <div class = "row">
+    <div class = "col-xl-5">
+      <form>
+        <div class = "form-row">
+          <div class = "form-group col-md-6">
+            <label for = "email"> Correo electrónico * </label>
+            <input type="email" class="form-control" id="email" placeholder="Correo electrónico">
+          </div>
+          <div class = "form-group col-md-6">
+            <label for = "nombre"> Nombre * </label>
+                <input type="text" class="form-control" id="nombre" placeholder="">
+        </div>
+        <div class = "form-group col-md-6">
+          <label for = "direccion"> Dirección * </label>
+            <input type="text" class="form-control" id="direccion" placeholder="C/">
+        </div>
+        <div class = "form-group col-md-6">
+          <label for = "asunto"> Asunto * </label>
+            <select class="form-control" id="asunto">
+                <option></option>
+                <option>Devoluciones</option>
+                <option>Garantías</option>
+                <option>Ventas</option>
+                <option>Otro</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="mensaje">Mensaje *</label>
+            <textarea class="form-control" id="mensaje" rows="3"></textarea>
+        </div>
+        <div class="form-group col-md-6"></div>
+        <div class="form-check col-md-12">
+         &nbsp;&nbsp;&nbsp;&nbsp;
+         <input class="form-check-input" type="checkbox" value="" id="checkbox">
+            <label class="form-check-label" for="checkbox">
+                Leyó y aceptó la política de protección de datos.
+            </label>
+            <p></p>
+        </div>
+        <div class="form-check col-md-12">
+        <button type = "submit" class = "btn btn-primary"> Enviar </button>
+        </div>
+        </div>
+      </form>
+    </div>
+    <div class = "col-xl-4">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.1037470088754!2d-5.0838176151925465!3d37.55261941764696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd12caea8e08f2bb%3A0x4dd34539e2aa7b93!2sI.E.S.%20Luis%20V%C3%A9lez%20de%20Guevara!5e0!3m2!1ses!2ses!4v1587033873345!5m2!1ses!2ses" width="600" height="450"
+       frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+</div>
+</div>
+</br></br>
+</br></br>
+{% endblock %}
