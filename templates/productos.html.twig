@@ -9,12 +9,22 @@
   </ol>
 </nav>
 <div class = "container">
-  <h2>{{ordenador.Nombre}}</h2>
-    <p>{{ordenador.Procesador}}</p>
-    <p>{{ordenador.Memoria}}</p>
-    <p><strong>{{ordenador.Precio}}</strong></p>
-    <p><a href="{{ path('producto_editar', {'id' : ordenador.id}) }}">Editar Producto</a></p>
-    <p><a href="{{ path('producto_borrar', {'id' : ordenador.id}) }}">Borrar Producto</a></p>
+ <h1>Nuestro catálogo</h1>
+    <ul>
+        {% for productos in productos %}
+            <li><a href="{{ path('productos', {'id': productos.id}) }}">
+                {{ productos.nombre }}
+            </a>
+            <p>{{ productos.color }}</p>
+            <p>{{ productos.memoria }}</p>
+            <p>{{ productos.descripcion }}</p>
+            <p>{{ productos.precio }}</p>
+            </li>
+        {% else %}
+            <li>No hay productos</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{{ path('producto_nuevo') }}">Añadir producto</a></p>
 </div>
 </br></br>
 </br></br>

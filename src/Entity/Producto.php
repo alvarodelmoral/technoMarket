@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\OrdenadorRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ProductoRepository")
  */
-class Ordenador
+class Producto
 {
     /**
      * @ORM\Id()
@@ -24,12 +24,17 @@ class Ordenador
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $procesador;
+    private $color;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $memoria;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $descripcion;
 
     /**
      * @ORM\Column(type="integer")
@@ -53,26 +58,38 @@ class Ordenador
         return $this;
     }
 
-    public function getProcesador(): ?string
+    public function getColor(): ?string
     {
-        return $this->procesador;
+        return $this->color;
     }
 
-    public function setProcesador(string $procesador): self
+    public function setColor(string $color): self
     {
-        $this->procesador = $procesador;
+        $this->color = $color;
 
         return $this;
     }
 
-    public function getMemoria(): ?int
+    public function getMemoria(): ?string
     {
         return $this->memoria;
     }
 
-    public function setMemoria(int $memoria): self
+    public function setMemoria(string $memoria): self
     {
         $this->memoria = $memoria;
+
+        return $this;
+    }
+
+    public function getDescripcion(): ?string
+    {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion(string $descripcion): self
+    {
+        $this->descripcion = $descripcion;
 
         return $this;
     }

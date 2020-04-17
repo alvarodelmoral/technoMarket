@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Controller;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Entity\Ordenador;
+use App\Entity\Producto;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -9,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class Controller extends AbstractController
 {
-    
+
     public function indice()
     {
         return $this->render('inicio.html.twig');
@@ -22,7 +24,13 @@ class Controller extends AbstractController
 
     public function productos()
     {
-        return $this->render('productos.html.twig');
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $productos = $entityManager->getRepository(Producto::class)->findAll();
+
+        return $this->render('productos.html.twig', array(
+            'productos' => $productos,
+        ));
     }
 
     public function servicios()
@@ -31,114 +39,119 @@ class Controller extends AbstractController
     }
 
 
-    public function ordenador($id)
+    public function verProducto($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
 
-        $ordenador = $entityManager->getRepository(Ordenador::class)->find($id);
+        $producto = $entityManager->getRepository(Producto::class)->find($id);
 
-        if(!$ordenador) {
+        if (!$producto) {
             throw $this->createNotFoundException(
-                'No existe ningun producto con id '.$id
+                'No existe ningun producto con id ' . $id
             );
         }
 
-        return $this->render('productos.html.twig', array(
-            'ordenador' => $ordenador,
+        return $this->render('producto.html.twig', array(
+            'producto' => $producto,
         ));
-
     }
 
-    public function producto_nuevo(Request $request) 
+    public function nuevoProducto(Request $request)
     {
-        $ordenador = new Ordenador();
+        $producto = new Producto();
 
-        $form = $this->createFormBuilder($ordenador)            
-            ->add('Nombre', TextType::class)            
-            ->add('Procesador', TextareaType::class)  
-            ->add('Memoria', TextareaType::class) 
-            ->add('Precio', TextareaType::class)              
-            ->add('Guardar', SubmitType::class,
-                array('label' => 'Añadir Producto'))            
+        $form = $this->createFormBuilder($producto)
+            ->add('Nombre', TextType::class)
+            ->add('Color', TextareaType::class)
+            ->add('Memoria', TextareaType::class)
+            ->add('Descripcion', TextareaType::class)
+            ->add('Precio', TextareaType::class)
+            ->add(
+                'Guardar',
+                SubmitType::class,
+                array('label' => 'Añadir Producto')
+            )
             ->getForm();
 
-        $form -> handleRequest($request);
+        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
-            $ordenador = $form->getData();
-            
+        if ($form->isSubmitted() && $form->isValid()) {
+            $producto = $form->getData();
+
             $entityManager = $this->getDoctrine()->getManager();
 
-            $entityManager->persist($ordenador);
+            $entityManager->persist($producto);
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('producto_ver');
-        }
-            
-            return $this->render('productos.html.twig', array(
-                'form' => $form->createView(),        
-            ));
-    }
-
-    public function noticiaCreada()
-    {
-        return $this->render('noticiaCreada.html.twig');
-    }
-
-    public function editarNoticia(Request $request, $id)
-    {
-
-        $entityManager = $this->getDoctrine()->getManager();
-
-        $noticia = $entityManager->getRepository(Noticia::class)->find($id);
-
-        $form = $this->createFormBuilder($noticia)
-        ->add('titular', TextType::class)            
-        ->add('entrada', TextareaType::class)  
-        ->add('cuerpo', TextareaType::class)              
-        ->add('save', SubmitType::class,
-            array('label' => 'Editar Noticia'))            
-        ->getForm();
-
-            $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()){
-
-            $noticia = $form->getData();
-
-            $entityManager->flush();
-
-            return $this->redirectToRoute('noticia', array('id'=>$id));
-
+            return $this->redirectToRoute('producto_creado');
         }
 
-        return $this->render('nuevaNoticia.html.twig', array(
+        return $this->render('nuevoProducto.html.twig', array(
             'form' => $form->createView(),
         ));
-
     }
 
-    public function borrarNoticia($id)
+    public function creadoProducto()
+    {
+        return $this->render('productoCreado.html.twig');
+    }
+
+    public function editarProducto(Request $request, $id)
     {
 
         $entityManager = $this->getDoctrine()->getManager();
 
-        $noticia = $entityManager->getRepository(Noticia::class)->find($id);
+        $producto = $entityManager->getRepository(Producto::class)->find($id);
 
-        if (!$noticia){
+        $form = $this->createFormBuilder($producto)
+            ->add('Nombre', TextType::class)
+            ->add('Color', TextareaType::class)
+            ->add('Memoria', TextareaType::class)
+            ->add('Descripcion', TextareaType::class)
+            ->add('Precio', TextareaType::class)
+            ->add(
+                'Guardar',
+                SubmitType::class,
+                array('label' => 'Editar Producto')
+            )
+            ->getForm();
 
-            throw $this->createNotFoundException(
-                'No existe ninguna noticia con id '.$id
-            );
 
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $producto = $form->getData();
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('productos', array('id' => $id));
         }
 
-        $entityManager->remove($noticia);
+        return $this->render('nuevoProducto.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    public function borrarProducto($id)
+    {
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $producto = $entityManager->getRepository(Producto::class)->find($id);
+
+        if (!$producto) {
+
+            throw $this->createNotFoundException(
+                'No existe ningun producto con id ' . $id
+            );
+        }
+
+        $entityManager->remove($producto);
 
         $entityManager->flush();
 
-        return $this->render('borrarNoticia.html.twig');
-
+        return $this->render('borrarProducto.html.twig');
     }
 }

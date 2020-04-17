@@ -1,33 +1,35 @@
 indice:
-   path: /
-   controller: App\Controller\Controller::indice
+  path: /
+  controller: App\Controller\Controller::indice
 
 contacto:
-   path: /contacto
-   controller: App\Controller\Controller::contacto
+  path: /contacto
+  controller: App\Controller\Controller::contacto
 
 productos:
-   path: /productos
-   controller: App\Controller\Controller::productos
+  path: /productos
+  controller: App\Controller\Controller::productos
 
 servicios:
-   path: /servicios
-   controller: App\Controller\Controller::servicios
-
-
+  path: /servicios
+  controller: App\Controller\Controller::servicios
 
 producto_nuevo:
-  path: /nuevo
+  path: /productos/nuevo
   controller: App\Controller\Controller::nuevoProducto
 
+producto_creado:
+  path: /productos/creado
+  controller: App\Controller\Controller::creadoProducto
+
 producto_ver:
-  path: /productoVer
+  path: /productos/{id}
   controller: App\Controller\Controller::verProducto
 
 producto_editar:
-  path: /editarProducto/{id}
+  path: /productos/{id}/editar
   controller: App\Controller\Controller::editarProducto
 
 producto_borrar:
-  path: /borrarProducto/{id}
+  path: /productos/{id}/borrar
   controller: App\Controller\Controller::borrarProducto

@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+{% block titulo %}Productos - {{ parent() }}{% endblock %}
+{% block body %}
+<div class = "container">
+  <h2>{{producto.nombre}}</h2>
+    <p>{{producto.color}}</p>
+    <p>{{producto.memoria}}</p>
+    <p>{{producto.descripcion}}</p>
+    <p>{{producto.precio}}</p>
+    <p><a href="{{ path('producto_editar', {'id' : producto.id}) }}">Editar Producto</a></p>
+    <p><a href="{{ path('producto_borrar', {'id' : producto.id}) }}">Borrar Producto</a></p>
+</div>
+{% endblock %}
