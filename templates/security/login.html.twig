@@ -1,42 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block titulo %}Entrar - {{ parent() }}{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
+   {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+           &nbsp; Estás registrado como: {{ app.user.username }}, <a href="{{ path('app_logout') }}">Cerrar sesión</a>
         </div>
     {% endif %}
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+     <div class="col-10 col-md-8 col-lg-6">
+        <form class="border border-light p-5" method="post">
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
+    <h2 class="text-center mb-4">INICIAR SESIÓN</h2>
 
+ <div class="form-group"> 
+ <label for="inputEmail">Email*</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Introduzca su correo" required autofocus>
+  </div>
+   <div class="form-group">
+ <label for="inputPassword">Contraseña*</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Introduzca su contraseña" required>
+  </div>
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
+    <div class="d-flex justify-content-around">
+        <div>
+            <!-- Remember me -->
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                <label class="custom-control-label" for="defaultLoginFormRemember">Recuérdame</label>
+            </div>
         </div>
-    #}
+        <div>
+            <!-- Forgot password -->
+  <a href="https://support.google.com/accounts/answer/7682439?hl=es">
+  <span style="color:blue">¿Has olvidado tu contraseña?</span></a>  
+   </div>
+    </div>
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
+    <!-- Sign in button -->
+    <button class="btn btn-info btn-block my-4" type="submit">Entrar</button>
+</div>
 </form>
+      </div>
+    </div>
+</div>
+</br></br></br></br>
 {% endblock %}
