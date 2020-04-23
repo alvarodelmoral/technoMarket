@@ -41,6 +41,11 @@ class Producto
      */
     private $precio;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $brochureFilename;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +107,18 @@ class Producto
     public function setPrecio(int $precio): self
     {
         $this->precio = $precio;
+
+        return $this;
+    }
+
+    public function getBrochureFilename()
+    {
+        return $this->brochureFilename;
+    }
+
+    public function setBrochureFilename($brochureFilename)
+    {
+        $this->brochureFilename = $brochureFilename;
 
         return $this;
     }

@@ -1,6 +1,10 @@
 {% extends "base.html.twig" %}
 {% block titulo %}Servicios - {{ parent() }}{% endblock %}
 
+{% block sidebar %}
+    {{ include('menu.html.twig', { 'seccionActual': "/servicios" }) }}
+{% endblock %}
+
 {% block body %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">

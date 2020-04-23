@@ -2,8 +2,12 @@
 
 {% block titulo %}Registro - {{ parent() }}{% endblock %}
 
+{% block sidebar %}
+    {{ include('menu.html.twig', { 'seccionActual': "/register" }) }}
+{% endblock %}
+
 {% block body %}
-    <h1>Register</h1>
+    <h2>Regístrate hoy mismo</h2>
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}

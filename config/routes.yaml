@@ -16,7 +16,7 @@ servicios:
 
 producto_nuevo:
   path: /productos/nuevo
-  controller: App\Controller\Controller::nuevoProducto
+  controller: App\Controller\ProductController::nuevoProducto
 
 producto_creado:
   path: /productos/creado

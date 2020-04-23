@@ -1,0 +1,25 @@
+ <ul class="navbar-nav mr-auto">
+    
+                <li {% if seccionActual == "/" %} class="nav-item active"{% endif %}>
+                    <a class="nav-link" href="{{ path('indice') }}">Inicio</a>
+                </li>
+                 <li {% if seccionActual == "/productos" %} class="nav-item active"{% endif %}>
+                    <a class="nav-link" href="{{ path('productos') }}">Productos</a>
+                </li>
+                <li {% if seccionActual == "/servicios" %} class="nav-item active"{% endif %}>
+                    <a class="nav-link" href="{{ path('servicios') }}">Servicios</a>
+                </li>
+                <li {% if seccionActual == "/contacto" %} class="nav-item active"{% endif %}>
+                    <a class="nav-link" href="{{ path('contacto') }}">Contacto</a>
+                </li>
+                <li class="nav-item dropdown">
+                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                 aria-haspopup="true" aria-expanded="false">
+                 <i class="fas fa-user"></i>
+                 </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="/login">Inicia Sesión</a>
+                  <a class="dropdown-item" href="/register">Regístrate</a>
+                </div>
+                </li>
+</ul>

@@ -1,0 +1,9 @@
+  <li><a href="{{ path('producto_ver', {'id': producto.id}) }}">
+                {{ producto.nombre }}
+            </a>
+            <p>{{ producto.color }}</p>
+            <p>{{ producto.memoria }}</p>
+            <p>{{ producto.descripcion }}</p>
+            <p>{{ producto.precio }} €</p>
+            <img src="{{ asset('uploads/brochures/' ~ producto.brochureFilename) }}"></img>
+  </li>

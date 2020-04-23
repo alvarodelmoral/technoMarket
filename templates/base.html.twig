@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
         <div style="padding-right: 20px;">
             <a class="navbar-brand" href="/">
-                <img src="imagenes/logo.png" weight="70" height="70" alt="logo">
+                <img src="{{ asset('imagenes/logo.png') }}" weight="70" height="70" alt="logo">
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -27,30 +27,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/productos">Productos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/servicios">Servicios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contacto">Contacto</a>
-                </li>
-                <li class="nav-item dropdown">
-                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false">
-                 <i class="fas fa-user"></i>
-                 </a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="/login">Inicia Sesión</a>
-                  <a class="dropdown-item" href="/register">Regístrate</a>
-                </div>
-                </li>
-            </ul>
+            {% block sidebar %}
+                {{ include('menu.html.twig', { 'seccionActual': "/" }) }}
+            {% endblock %}
             <form class="form-inline mt-2 mt-md-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
@@ -155,10 +134,10 @@
 
 </body>
 
-<script src="vendors/js/jquery-3.4.1.min.js"></script>
-<script src="vendors/js/bootstrap.min.js"></script>
-<script src="vendors/js/jquery.validate.min.js"></script>
-<script src="vendors/js/popper.min.js"></script>
+<script src="{{ asset('vendors/js/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('vendors/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendors/js/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('vendors/js/popper.min.js') }}"></script>
 
 
 

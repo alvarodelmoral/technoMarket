@@ -1,6 +1,10 @@
 {% extends "base.html.twig" %}
 {% block titulo %}Productos - {{ parent() }}{% endblock %}
 
+{% block sidebar %}
+    {{ include('menu.html.twig', { 'seccionActual': "/productos" }) }}
+{% endblock %}
+
 {% block body %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -11,21 +15,17 @@
 <div class = "container">
  <h1>Nuestro catálogo</h1>
     <ul>
-        {% for productos in productos %}
-            <li><a href="{{ path('productos', {'id': productos.id}) }}">
-                {{ productos.nombre }}
-            </a>
-            <p>{{ productos.color }}</p>
-            <p>{{ productos.memoria }}</p>
-            <p>{{ productos.descripcion }}</p>
-            <p>{{ productos.precio }}</p>
-            </li>
+        {% for producto in productos %}
+          {{ include('unicoProducto.html.twig', { 'producto': producto }) }}
         {% else %}
             <li>No hay productos</li>
         {% endfor %}
     </ul>
+    {% if is_granted('ROLE_ADMIN') %}
     <p><a href="{{ path('producto_nuevo') }}">Añadir producto</a></p>
+    {% endif %}
 </div>
 </br></br>
 </br></br>
 {% endblock %}
+
