@@ -56,42 +56,6 @@ class Controller extends AbstractController
         ));
     }
 
-    // public function nuevoProducto(Request $request)
-    // {
-    //     $producto = new Producto();
-
-    //     $form = $this->createFormBuilder($producto)
-    //         ->add('Nombre', TextType::class)
-    //         ->add('Color', TextareaType::class)
-    //         ->add('Memoria', TextareaType::class)
-    //         ->add('Descripcion', TextareaType::class)
-    //         ->add('Precio', TextareaType::class)
-    //         ->add(
-    //             'Guardar',
-    //             SubmitType::class,
-    //             array('label' => 'Añadir Producto')
-    //         )
-    //         ->getForm();
-
-    //     $form->handleRequest($request);
-
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $producto = $form->getData();
-
-    //         $entityManager = $this->getDoctrine()->getManager();
-
-    //         $entityManager->persist($producto);
-
-    //         $entityManager->flush();
-
-    //         return $this->redirectToRoute('producto_creado');
-    //     }
-
-    //     return $this->render('nuevoProducto.html.twig', array(
-    //         'form' => $form->createView(),
-    //     ));
-    // }
-
     public function creadoProducto()
     {
         return $this->render('productoCreado.html.twig');

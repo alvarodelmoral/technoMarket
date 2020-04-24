@@ -18,8 +18,15 @@
                  <i class="fas fa-user"></i>
                  </a>
                 <div class="dropdown-menu">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') == false %}
                   <a class="dropdown-item" href="/login">Inicia Sesión</a>
                   <a class="dropdown-item" href="/register">Regístrate</a>
+                {% elseif is_granted('IS_AUTHENTICATED_FULLY') %}
+                 <a class="dropdown-item">Estás como: <span style="color:darkblue">{{ app.user.username|replace({'@gmail.com': ""}) }}</span></a> 
+                  <a class="dropdown-item" href="{{ path('app_logout') }}">Cerrar Sesión</a>
+                {% endif %}
+
+
                 </div>
                 </li>
 </ul>
