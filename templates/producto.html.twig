@@ -7,15 +7,66 @@
 
 {% block body %}
 <div class = "container">
-  <h2>{{producto.nombre}}</h2>
-    <p>{{producto.color}}</p>
-    <p>{{producto.memoria}}</p>
-    <p>{{producto.descripcion}}</p>
-    <p>{{producto.precio}} €</p>
-    <img src="{{ asset('uploads/brochures/' ~ producto.brochureFilename) }}"></img>
+	<div class="row">
+		<aside class="col-sm-5 border-right">
+<article class="gallery-wrap"> 
+<div class="img-big-wrap">
+  <div><img src="{{ asset('uploads/brochures/' ~ producto.brochureFilename) }}"></img></div>
+</div> 
+</article> 
+		</aside>
+		<aside class="col-sm-7">
+<article class="card-body p-5">
+	<h3 class="title mb-3">{{producto.nombre}}</h3>
+
+<p class="price-detail-wrap"> 
+	<span class="price h3 text-warning"> 
+		<span class="currency">{{producto.precio}} €</span>
+	</span> 
+</p>
+<dl class="item-property">
+  <dt>Descripción</dt>
+  <dd><p>{{producto.descripcion}}</p></dd>
+</dl>
+<dl class="param param-feature">
+  <dt>Color</dt>
+  <dd>{{producto.color}}</dd>
+</dl> 
+<dl class="param param-feature">
+  <dt>Memoria</dt>
+  <dd>{{producto.memoria}}</dd>
+</dl> 
+
+<hr>
+	<div class="row">
+		<div class="col-sm-5">
+			<dl class="param param-inline">
+			  <dt>Cantidad: </dt>
+			  <dd>
+			  	<select class="form-control form-control-sm" style="width:70px;">
+			  		<option> 1 </option>
+			  		<option> 2 </option>
+			  		<option> 3 </option>
+			  	</select>
+			  </dd>
+			</dl> 
+		</div>
+
+	</div> 
+	<hr>
+	<a href="#" class="btn btn-lg btn-primary text-uppercase"> Comprar ahora </a>
+	<a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Añadir al carrito </a>
+</article> 
+		</aside> 
+	</div> 
+
+
+    <br><br>
         {% if is_granted('ROLE_ADMIN') %}
-    <p><a href="{{ path('producto_editar', {'id' : producto.id}) }}">Editar Producto</a></p>
-    <p><a href="{{ path('producto_borrar', {'id' : producto.id}) }}">Borrar Producto</a></p>
+    <p><a href="{{ path('producto_editar', {'id' : producto.id}) }}" class="btn btn-outline-success my-2 my-sm-0">Editar Producto</a></p>
+    <p><a href="{{ path('producto_borrar', {'id' : producto.id}) }}" class="btn btn-outline-success my-2 my-sm-0">Borrar Producto</a></p>
         {% endif %}
 </div>
 {% endblock %}
+
+

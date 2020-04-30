@@ -1,9 +1,19 @@
-  <li><a href="{{ path('producto_ver', {'id': producto.id}) }}">
-                {{ producto.nombre }}
-            </a>
-            <p>{{ producto.color }}</p>
-            <p>{{ producto.memoria }}</p>
-            <p>{{ producto.descripcion }}</p>
-            <p>{{ producto.precio }} €</p>
-            <img src="{{ asset('uploads/brochures/' ~ producto.brochureFilename) }}"></img>
-  </li>
+
+
+     <div class="col">
+   <div class="card" style="width:300px">
+    <img class="card-img-top" src="{{ asset('uploads/brochures/' ~ producto.brochureFilename) }}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title font-weight-bold">{{ producto.nombre }}</h4>
+      <p class="card-text">{{ producto.descripcion }}</p>
+          <hr class="my-4">
+      <a href="{{ path('producto_ver', {'id': producto.id}) }}" class="btn btn-primary">Ver Producto</a>
+      <i class="fas fa-shopping-cart text-muted float-right p-1 my-1" data-toggle="tooltip" data-placement="top" title="Añadir al carrito"></i>
+      <i class="fas fa-heart text-muted float-right p-1 my-1 mr-3" data-toggle="tooltip" data-placement="top" title="Me gusta"></i>
+    </div>
+  </div>
+  </div>
+
+    <br><br>
+
+

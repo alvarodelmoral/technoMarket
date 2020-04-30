@@ -14,15 +14,17 @@
 </nav>
 <div class = "container">
  <h1>Nuestro catálogo</h1>
-    <ul>
+ <br>
+  <div class="row">
         {% for producto in productos %}
           {{ include('unicoProducto.html.twig', { 'producto': producto }) }}
         {% else %}
             <li>No hay productos</li>
         {% endfor %}
-    </ul>
+</div>
+<br>
     {% if is_granted('ROLE_ADMIN') %}
-    <p><a href="{{ path('producto_nuevo') }}">Añadir producto</a></p>
+    <p><a href="{{ path('producto_nuevo') }}" class="btn btn-outline-success my-2 my-sm-0">Añadir Producto</a></p>
     {% endif %}
 </div>
 </br></br>
