@@ -38,6 +38,17 @@ class Controller extends AbstractController
         return $this->render('servicios.html.twig');
     }
 
+    public function carrito()
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $productos = $entityManager->getRepository(Producto::class)->findAll();
+
+        return $this->render('carrito.html.twig', array(
+            'productos' => $productos,
+        ));
+    }
+
 
     public function verProducto($id)
     {

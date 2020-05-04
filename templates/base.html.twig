@@ -53,7 +53,7 @@
                         <form class="form-inline mt-2 mt-md-0">
                             <input class="form-control mr-sm-2" type="email" placeholder="Correo electrónico"
                                 aria-label="Correo electrónico">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Enviar</button>
+                            <a data-toggle="modal" data-target="#myModal"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Enviar</button></a>
                         </form>
                     </div>
                     <div class="col">
@@ -73,7 +73,26 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal 1-->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">¡Genial!</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            Se ha enviado un código de confirmación a tu correo. 
+            <p>Muchas gracias.</p>
+        </div>
+        <div class="modal-footer">
+        <button class="btn btn-outline-success my-2 my-sm-0" data-dismiss="modal" type="button">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal 2-->
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
         aria-hidden="true">
         <div class="modal-dialog" role="document">

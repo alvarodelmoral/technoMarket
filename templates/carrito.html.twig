@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+{% block titulo %}Carrito - {{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ include('menu.html.twig', { 'seccionActual': "/carrito" }) }}
+{% endblock %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Carrito</li>
+  </ol>
+</nav>
+<div class = "container">
+  <h1> Mi carrito de compras </h1>
+
+   <table class="table">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Sub total</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+       {% for producto in productos %}
+       {% if producto == false %}
+        <tr><td colspan="5"><p>Tu carrito esta vacío.....</p></td>
+        {% else %}
+        <tr>
+            <td><img src="{{ asset('uploads/brochures/' ~ producto.brochureFilename) }}" with="50px" height="50px"></td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.precio}} €</td>
+            <td><input type="number" class="form-control text-center" value="1" onchange=""></td>
+            <td> €</td>
+            <td>
+                <a href="AccionCarta.php" class="btn btn-danger" onclick="return confirm('Confirma eliminar?')"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+        {% endif %}
+       {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td><a href="/productos" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continuar Comprando</a></td>
+            <td colspan="2"></td>
+            <td class="text-center"><strong>Total €</strong></td>
+            <td><a href="Pagos.php" class="btn btn-success btn-block">Pagos <i class="fa fa-angle-right"></i></a></td>
+        </tr>
+    </tfoot>
+    </table>
+</div>
+</br></br>
+</br></br>
+{% endblock %}

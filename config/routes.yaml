@@ -14,6 +14,10 @@ servicios:
   path: /servicios
   controller: App\Controller\Controller::servicios
 
+carrito:
+  path: /carrito
+  controller: App\Controller\Controller::carrito
+
 producto_nuevo:
   path: /productos/nuevo
   controller: App\Controller\ProductController::nuevoProducto
