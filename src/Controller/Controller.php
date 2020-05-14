@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Producto;
+use App\Form\ContactType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -17,33 +18,43 @@ class Controller extends AbstractController
         return $this->render('inicio.html.twig');
     }
 
-    public function contacto()
+    public function contacto(Request $request)
     {
+        $form = $this->createForm(ContactType::class);
 
-        // $email = $_POST['email'];
-        // $nombre = $_POST['nombre'];
-        // $direccion = $_POST['direccion'];
-        // $asunto = $_POST['asunto'];
-        // $mensaje = $_POST['mensaje'];
+        $form->handleRequest($request);
 
-        // $header = 'From: ' . $email . " \r\n";
-        // $header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
-        // $header .= "Mime-Version: 1.0 \r\n";
-        // $header .= "Content-Type: text/plain";
+        if ($form->isSubmitted() && $form->isValid()) {
+            $mailer = $this->get('mailer');
+            $message = $mailer->createMessage()
+                ->setSubject($form->get('asunto')->getData())
+                ->setFrom('jose@gmail.com')
+                ->setTo('vetmenor@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'contacto.html.twig',
+                        array(
+                            'ip' => $request->getClientIp(),
+                            'nombre' => $form->get('nombre')->getData(),
+                            'email' => $form->get('email')->getData(),
+                            'mensaje' => $form->get('mensaje')->getData()
+                        )
+                    )
+                );
 
-        // $mensaje = "Este mensaje fue enviado por " . $nombre . ",\r\n";
-        // $mensaje .= "Su e-mail es: " . $email . " \r\n";
-        // $mensaje .= "Desde: " . $_POST['direccion'] . " \r\n";
-        // $mensaje .= "Mensaje: " . $_POST['mensaje'] . " \r\n";
-        // $mensaje .= "Enviado el " . date('d/m/Y', time());
+            $mailer->send($message);
 
-        // $para = 'vetmenor@gmail.com';
+            $this->addFlash(
+                'success',
+                'Mensaje enviado con éxito.'
+            );
 
-        // mail($para, $asunto, utf8_decode($mensaje), $header);
+            return $this->redirectToRoute('contacto');
+        }
 
-        // header("Location:inicio.html.twig");
-
-        return $this->render('contacto.html.twig');
+        return $this->render('contacto.html.twig', [
+            'contacto' => $form->createView(),
+        ]);
     }
 
     public function productos()
