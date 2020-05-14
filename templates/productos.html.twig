@@ -6,6 +6,34 @@
 {% endblock %}
 
 {% block body %}
+
+{% for flash_message in app.session.flashbag.get('notice') %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Producto insertado.</strong>        {{ flash_message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
+{% for flash_message in app.session.flashbag.get('notice2') %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Producto editado.</strong>        {{ flash_message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
+{% for flash_message in app.session.flashbag.get('notice3') %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Producto borrado.</strong>        {{ flash_message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
@@ -22,7 +50,7 @@
             <li>No hay productos</li>
         {% endfor %}
 </div>
-<br>
+<br><br>
     {% if is_granted('ROLE_ADMIN') %}
     <p><a href="{{ path('producto_nuevo') }}" class="btn btn-outline-success my-2 my-sm-0">Añadir Producto</a></p>
     {% endif %}

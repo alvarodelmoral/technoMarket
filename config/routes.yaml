@@ -22,10 +22,6 @@ producto_nuevo:
   path: /productos/nuevo
   controller: App\Controller\ProductController::nuevoProducto
 
-producto_creado:
-  path: /productos/creado
-  controller: App\Controller\Controller::creadoProducto
-
 producto_ver:
   path: /productos/{id}
   controller: App\Controller\Controller::verProducto

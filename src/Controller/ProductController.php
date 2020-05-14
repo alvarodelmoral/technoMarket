@@ -55,9 +55,14 @@ class ProductController extends AbstractController
                 $entityManager->flush();
             }
 
+            $this->addFlash(
+                'notice',
+                'Tus cambios se han guardado!'
+            );
+
             // ... persist the $product variable or any other work
 
-            return $this->redirect($this->generateUrl('producto_creado'));
+            return $this->redirect($this->generateUrl('productos'));
         }
 
         return $this->render('nuevoProducto.html.twig', [

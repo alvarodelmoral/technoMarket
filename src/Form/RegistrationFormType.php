@@ -25,6 +25,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Debes aceptar los términos de uso.',
                     ]),
                 ],
+                'label' => "Acepto los términos",
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
@@ -41,6 +42,7 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
+                'label' => "Contraseña",
             ]);
     }
 

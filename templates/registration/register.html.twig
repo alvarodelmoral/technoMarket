@@ -7,13 +7,23 @@
 {% endblock %}
 
 {% block body %}
-    <h2>Regístrate hoy mismo</h2>
+  <div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+     <div class="col-10 col-md-12 col-lg-10">
+        <form class="border border-light p-5" method="post">
 
-    {{ form_start(registrationForm) }}
+    <h2 class="text-center mb-4">REGÍSTRATE</h2>
+
+        {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
         <button class = "btn btn-primary">Registrarse</button>
     {{ form_end(registrationForm) }}
+    </form>
+      </div>
+    </div>
+</div>
+</br></br></br></br>
 {% endblock %}

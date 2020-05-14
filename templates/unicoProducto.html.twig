@@ -1,10 +1,11 @@
 
 
-     <div class="col">
+  <div class="col">
    <div class="card" style="width:300px">
     <img class="card-img-top" src="{{ asset('uploads/brochures/' ~ producto.brochureFilename) }}" alt="Card image" style="width:100%">
     <div class="card-body">
       <h4 class="card-title font-weight-bold">{{ producto.nombre }}</h4>
+      <p class="card-text"><strong>{{ producto.precio }} €</strong></p>
       <p class="card-text">{{ producto.descripcion }}</p>
           <hr class="my-4">
       <a href="{{ path('producto_ver', {'id': producto.id}) }}" class="btn btn-primary">Ver Producto</a>
