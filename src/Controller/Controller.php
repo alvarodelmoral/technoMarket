@@ -18,28 +18,21 @@ class Controller extends AbstractController
         return $this->render('inicio.html.twig');
     }
 
-    public function contacto(Request $request)
+    public function contacto(Request $request,  \Swift_Mailer $mailer)
     {
         $form = $this->createForm(ContactType::class);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $mailer = $this->get('mailer');
-            $message = $mailer->createMessage()
-                ->setSubject($form->get('asunto')->getData())
-                ->setFrom('jose@gmail.com')
+
+            $message = (new \Swift_Message('Saludos, este es un mensaje de un cliente'))
+                ->setSubject($form->getData()['asunto'])
+                ->setFrom($form->getData()['email'])
                 ->setTo('vetmenor@gmail.com')
                 ->setBody(
-                    $this->renderView(
-                        'contacto.html.twig',
-                        array(
-                            'ip' => $request->getClientIp(),
-                            'nombre' => $form->get('nombre')->getData(),
-                            'email' => $form->get('email')->getData(),
-                            'mensaje' => $form->get('mensaje')->getData()
-                        )
-                    )
+                    $form->getData()['mensaje'],
+                    'text/plain'
                 );
 
             $mailer->send($message);
@@ -48,8 +41,6 @@ class Controller extends AbstractController
                 'success',
                 'Mensaje enviado con éxito.'
             );
-
-            return $this->redirectToRoute('contacto');
         }
 
         return $this->render('contacto.html.twig', [
@@ -113,7 +104,14 @@ class Controller extends AbstractController
             ->add('Nombre', TextType::class)
             ->add('Color', TextType::class)
             ->add('Memoria', TextType::class)
-            ->add('Descripcion', TextareaType::class)
+            ->add(
+                'Descripcion',
+                TextareaType::class,
+                array(
+                    'required' => true,
+                    'attr' => ['maxlength' => 120]
+                )
+            )
             ->add('Precio', TextType::class)
             ->add(
                 'Guardar',

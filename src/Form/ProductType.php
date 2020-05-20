@@ -20,7 +20,14 @@ class ProductType extends AbstractType
             ->add('Nombre', TextType::class)
             ->add('Color', TextType::class)
             ->add('Memoria', TextType::class)
-            ->add('Descripcion', TextareaType::class)
+            ->add(
+                'Descripcion',
+                TextareaType::class,
+                array(
+                    'required' => true,
+                    'attr' => ['maxlength' => 120]
+                )
+            )
             ->add('Precio', TextType::class)
             ->add('brochure', FileType::class, [
                 'label' => 'Inserta imagen 

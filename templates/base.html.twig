@@ -31,8 +31,10 @@
                 {{ include('menu.html.twig', { 'seccionActual': "/" }) }}
             {% endblock %}
             <form class="form-inline mt-2 mt-md-0">
+             <div class="search">
                 <input class="form-control mr-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Buscar" aria-label="Buscar">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" for="busqueda">Buscar</button>
+                 </div>
             </form>
         </div>
     </nav>
@@ -154,11 +156,10 @@
 </body>
 
 <script src="{{ asset('vendors/js/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('vendors/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('vendors/js/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('vendors/js/popper.min.js') }}"></script>
-
-
 
 
 </html>

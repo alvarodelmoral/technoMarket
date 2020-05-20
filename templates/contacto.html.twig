@@ -30,6 +30,7 @@
   <br />
   <div class = "row">
     <div class = "col-xl-5">
+      {{ form_start(contacto) }}
         <div class = "form-row">
           <div class = "form-group col-md-6">
             <label for = "email"> Correo electrónico * </label>
@@ -60,6 +61,7 @@
           {{ form_row(contacto.enviar) }} 
         </div>
         </div>
+      {{ form_end(contacto) }}
     </div>
     <div class = "col-xl-4">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.1037470088754!2d-5.0838176151925465!3d37.55261941764696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd12caea8e08f2bb%3A0x4dd34539e2aa7b93!2sI.E.S.%20Luis%20V%C3%A9lez%20de%20Guevara!5e0!3m2!1ses!2ses!4v1587033873345!5m2!1ses!2ses" width="600" height="450"

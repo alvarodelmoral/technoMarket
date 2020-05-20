@@ -1,3 +1,13 @@
 swiftmailer:
-    url: '%env(MAILER_URL)%'
-    spool: { type: 'memory' }
+  url: "%env(MAILER_URL)%"
+  spool: { type: "memory" }
+#   transport: gmail
+#   username: vetmenor@gmail.com
+#   password: contraseña
+#   host: localhost
+#   port: 465
+#   stream_options:
+#     ssl:
+#       allow_self_signed: true
+#       verify_peer: false
+#       verify_peer_name: false
