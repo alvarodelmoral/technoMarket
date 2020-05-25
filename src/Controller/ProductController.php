@@ -56,8 +56,8 @@ class ProductController extends AbstractController
             }
 
             $this->addFlash(
-                'notice',
-                'Tus cambios se han guardado!'
+                'success',
+                'Tus cambios se han guardado.'
             );
 
             // ... persist the $product variable or any other work

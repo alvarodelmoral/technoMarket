@@ -28,10 +28,12 @@ class Controller extends AbstractController
 
             $message = (new \Swift_Message('Saludos, este es un mensaje de un cliente'))
                 ->setSubject($form->getData()['asunto'])
-                ->setFrom($form->getData()['email'])
+                ->setFrom('vetmenor@gmail.com')
                 ->setTo('vetmenor@gmail.com')
                 ->setBody(
-                    $form->getData()['mensaje'],
+                    'Email: ' . $form->getData()['email'] .
+                        "\n" . 'Asunto: ' . $form->getData()['asunto'] .
+                        "\n" . 'Mensaje: ' . $form->getData()['mensaje'],
                     'text/plain'
                 );
 
@@ -130,8 +132,8 @@ class Controller extends AbstractController
             $entityManager->flush();
 
             $this->addFlash(
-                'notice2',
-                'Tus cambios se han guardado!'
+                'success',
+                'Producto editado con éxito.'
             );
 
             return $this->redirectToRoute('productos', array('id' => $id));
@@ -161,8 +163,8 @@ class Controller extends AbstractController
         $entityManager->flush();
 
         $this->addFlash(
-            'notice3',
-            'Tus cambios se han guardado!'
+            'success',
+            'Producto borrado con éxito.'
         );
 
         return $this->redirect($this->generateUrl('productos'));

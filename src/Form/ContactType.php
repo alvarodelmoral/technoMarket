@@ -49,6 +49,7 @@ class ContactType extends AbstractType
                         'Envíos' => 'envios',
                         'Otros' => 'otros',
                     ],
+                    'label' => false,
                 ],
             )
             ->add(

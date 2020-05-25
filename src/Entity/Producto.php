@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -45,6 +47,16 @@ class Producto
      * @ORM\Column(type="string")
      */
     private $brochureFilename;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\CartContent", mappedBy="producto", orphanRemoval=true)
+     */
+    private $cartContents;
+
+    public function __construct()
+    {
+        $this->cartContents = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -119,6 +131,37 @@ class Producto
     public function setBrochureFilename($brochureFilename)
     {
         $this->brochureFilename = $brochureFilename;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CartContent[]
+     */
+    public function getCartContents(): Collection
+    {
+        return $this->cartContents;
+    }
+
+    public function addCartContent(CartContent $cartContent): self
+    {
+        if (!$this->cartContents->contains($cartContent)) {
+            $this->cartContents[] = $cartContent;
+            $cartContent->setProducto($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCartContent(CartContent $cartContent): self
+    {
+        if ($this->cartContents->contains($cartContent)) {
+            $this->cartContents->removeElement($cartContent);
+            // set the owning side to null (unless already changed)
+            if ($cartContent->getProducto() === $this) {
+                $cartContent->setProducto(null);
+            }
+        }
 
         return $this;
     }

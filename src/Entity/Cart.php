@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,44 +19,77 @@ class Cart
     private $id;
 
     /**
-     *
-     * @OneToOne(targetEntity="User", mappedBy="cart")
-     * @ORM\Column(type="string", length=255)
+     * @ORM\OneToMany(targetEntity="App\Entity\CartContent", mappedBy="cart", orphanRemoval=true)
+     */
+    private $content;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="cart", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
-    /**
-     * @OneToMany(targetEntity="Content", mappedBy="cart")
-     * @ORM\Column(type="string", length=255)
-     */
-    private $content;
+    public function __construct()
+    {
+        $this->content = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUser(): ?string
+    /**
+     * @return Collection|CartContent[]
+     */
+    public function getContent(): Collection
+    {
+        return $this->content;
+    }
+
+    public function addContent(CartContent $content): self
+    {
+        if (!$this->content->contains($content)) {
+            $this->content[] = $content;
+            $content->setCart($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContent(CartContent $content): self
+    {
+        if ($this->content->contains($content)) {
+            $this->content->removeElement($content);
+            // set the owning side to null (unless already changed)
+            if ($content->getCart() === $this) {
+                $content->setCart(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(string $user): self
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getTotal()
     {
-        return $this->content;
-    }
+        $resultado = 0;
 
-    public function setContent(string $content): self
-    {
-        $this->content = $content;
+        foreach ($this->content as $content) {
+            $resultado += $content->getQuantity() * $content->getProducto()->getPrecio();
+        }
 
-        return $this;
+        return $resultado;
     }
 }

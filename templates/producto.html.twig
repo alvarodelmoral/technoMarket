@@ -43,10 +43,10 @@
 			<dl class="param param-inline">
 			  <dt>Cantidad: </dt>
 			  <dd>
-			  	<select class="form-control form-control-sm" style="width:70px;">
-			  		<option> 1 </option>
-			  		<option> 2 </option>
-			  		<option> 3 </option>
+			  	<select class="form-control form-control-sm" style="width:70px;"> 
+			  		<option data-url="###" id="option1" value="1" selected> 1 </option>
+			  		<option data-url="###" id="option2" value="2"> 2 </option>
+			  		<option data-url="###" id="option3" value="3"> 3 </option>
 			  	</select>
 			  </dd>
 			</dl> 
@@ -55,7 +55,7 @@
 	</div> 
 	<hr>
 	<a href="#" class="btn btn-lg btn-primary text-uppercase"> Comprar ahora </a>
-	<a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Añadir al carrito </a>
+	<a href="{{ path('carrito_añadir', {'idProduct' : producto.id, 'quantity' : 1}) }}" data-url="{{ path('carrito_añadir', {'idProduct' : producto.id, 'quantity' : "###"}) }}" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Añadir al carrito </a>
 </article> 
 		</aside> 
 	</div> 

@@ -18,6 +18,14 @@ carrito:
   path: /carrito
   controller: App\Controller\Controller::carrito
 
+carrito_añadir:
+  path: /carrito/add/{idProduct}/{quantity}
+  controller: App\Controller\CartController::addAction
+
+carrito_borrar:
+  path: /carrito/delete/{idCartContent}
+  controller: App\Controller\CartController::removeAction
+
 producto_nuevo:
   path: /productos/nuevo
   controller: App\Controller\ProductController::nuevoProducto

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Cart;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,8 +33,12 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $cart = new Cart();
+            $user->setCart($cart);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
+            $entityManager->persist($cart);
             $entityManager->flush();
 
             // do anything else you need here, like send an email
