@@ -9,6 +9,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
+
 
 class Controller extends AbstractController
 {
@@ -28,8 +30,8 @@ class Controller extends AbstractController
 
             $message = (new \Swift_Message('Saludos, este es un mensaje de un cliente'))
                 ->setSubject($form->getData()['asunto'])
-                ->setFrom('vetmenor@gmail.com')
-                ->setTo('vetmenor@gmail.com')
+                ->setFrom($_ENV["EMAIL"])
+                ->setTo($_ENV["EMAIL"])
                 ->setBody(
                     'Email: ' . $form->getData()['email'] .
                         "\n" . 'Asunto: ' . $form->getData()['asunto'] .
@@ -168,5 +170,21 @@ class Controller extends AbstractController
         );
 
         return $this->redirect($this->generateUrl('productos'));
+    }
+
+    public function menu(Security $security, $seccionActual)
+    {
+        $user = $security->getUser();
+
+        $cantidadProductos = 0;
+
+        if ($this->isGranted('ROLE_USER')) {
+            $cantidadProductos = $user->getCart()->getCantidadProductos();
+        }
+
+        return $this->render('menu.html.twig', array(
+            'seccionActual' => $seccionActual,
+            'cantidadProductos' => $cantidadProductos
+        ));
     }
 }

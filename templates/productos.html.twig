@@ -2,7 +2,15 @@
 {% block titulo %}Productos - {{ parent() }}{% endblock %}
 
 {% block sidebar %}
-    {{ include('menu.html.twig', { 'seccionActual': "/productos" }) }}
+    {{ render(path('menu', {seccionActual : "productos"})) }} 
+{% endblock %}
+
+{% block busqueda %}
+      <form class="form-inline mt-2 mt-md-0">
+         <div class="search">
+                <input class="form-control mr-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Buscar" aria-label="Buscar">
+              </div>
+         </form>
 {% endblock %}
 
 {% block body %}

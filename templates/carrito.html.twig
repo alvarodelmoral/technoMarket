@@ -2,7 +2,7 @@
 {% block titulo %}Carrito - {{ parent() }}{% endblock %}
 
 {% block sidebar %}
-    {{ include('menu.html.twig', { 'seccionActual': "/carrito" }) }}
+    {{ render(path('menu', {seccionActual : "carrito"})) }} 
 {% endblock %}
 
 {% block body %}
@@ -33,7 +33,7 @@
             <td>{{content.producto.nombre}}</td>
             <td>{{content.producto.precio}} €</td>
             <td>{{content.quantity}}</td>
-            <td> €</td>
+            <td>{{content.producto.precio * content.quantity}} €</td>
             <td>
                 <a href="{{ path('carrito_borrar', {'idCartContent' : content.id}) }}" class="btn btn-danger" onclick="return confirm('Confirma eliminar?')"><i class="fa fa-trash"></i></a>
             </td>
@@ -47,7 +47,7 @@
             <td><a href="/productos" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continuar Comprando</a></td>
             <td colspan="2"></td>
             <td class="text-center"><strong>Total {{app.user.cart.getTotal()}} €</strong></td>
-            <td><a href="Pagos.php" class="btn btn-success btn-block">Confirmar pedido <i class="fa fa-angle-right"></i></a></td>
+            <td><a href="/pedido" class="btn btn-success btn-block">Confirmar pedido <i class="fa fa-angle-right"></i></a></td>
         </tr>
     </tfoot>
     </table>

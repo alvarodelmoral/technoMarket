@@ -27,14 +27,9 @@ $(document).ready(function () {
   });
 });
 
-$("select option:selected").click(function () {
-  $("#option2")
-    .second()
-    .text($("#select").data("###") === 2)
-    .change();
-
-  $("#option3")
-    .second()
-    .text($("#select").data("###") === 3)
-    .change();
+$("select").change(function () {
+  $("#añadir").attr(
+    "href",
+    $("#añadir").data("url").replace("XXX", $("select").val())
+  );
 });

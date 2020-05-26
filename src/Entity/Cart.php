@@ -92,4 +92,15 @@ class Cart
 
         return $resultado;
     }
+
+    public function getCantidadProductos()
+    {
+        $resultado = 0;
+
+        foreach ($this->content as $content) {
+            $resultado += $content->getQuantity();
+        }
+
+        return $resultado;
+    }
 }

@@ -13,6 +13,18 @@ div.card {
   text-align: center;
 }
 
+#badge:after {
+  content: attr(value);
+  font-size: 14px;
+  background: rgb(71, 120, 255);
+  border-radius: 50%;
+  padding: 5px;
+  position: relative;
+  left: -8px;
+  top: -10px;
+  opacity: 0.9;
+}
+
 .gallery-wrap .img-big-wrap img {
   height: 450px;
   width: auto;

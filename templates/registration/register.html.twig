@@ -3,7 +3,7 @@
 {% block titulo %}Registro - {{ parent() }}{% endblock %}
 
 {% block sidebar %}
-    {{ include('menu.html.twig', { 'seccionActual': "/register" }) }}
+    {{ render(path('menu', {seccionActual : "login"})) }} 
 {% endblock %}
 
 {% block body %}

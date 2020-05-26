@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 {% block titulo %}Productos - {{ parent() }}{% endblock %}
 {% block sidebar %}
-    {{ include('menu.html.twig', { 'seccionActual': "/productos" }) }}
+            {{ render(path('menu', {seccionActual : "productos"})) }} 
 {% endblock %}
 {% block body %}
 <div class = "container">

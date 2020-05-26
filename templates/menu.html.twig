@@ -1,21 +1,21 @@
  <ul class="navbar-nav mr-auto">
     
-                <li {% if seccionActual == "/" %} class="nav-item active"{% endif %}>
+                <li class="nav-item {% if seccionActual == "indice" %}  active {% endif %}">
                     <a class="nav-link" href="{{ path('indice') }}">Inicio</a>
                 </li>
-                 <li {% if seccionActual == "/productos" %} class="nav-item active"{% endif %}>
+                 <li class="nav-item {% if seccionActual == "productos" %} active {% endif %}">
                     <a class="nav-link" href="{{ path('productos') }}">Productos</a>
                 </li>
-                <li {% if seccionActual == "/servicios" %} class="nav-item active"{% endif %}>
+                <li class="nav-item {% if seccionActual == "servicios" %} active {% endif %}">
                     <a class="nav-link" href="{{ path('servicios') }}">Servicios</a>
                 </li>
-                <li {% if seccionActual == "/contacto" %} class="nav-item active"{% endif %}>
+                <li class="nav-item {% if seccionActual == "contacto" %} active {% endif %}">
                     <a class="nav-link" href="{{ path('contacto') }}">Contacto</a>
                 </li>
-                <li {% if seccionActual == "/carrito" %} class="nav-item active"{% endif %}>
-                    <a class="nav-link" href="{{ path('carrito') }}"><i class="fas fa-shopping-cart"></i></a>
-                </li>&nbsp;&nbsp;
-                <li class="nav-item dropdown">
+                <li class="nav-item {% if seccionActual == "carrito" %} active {% endif %}">
+                    <a class="nav-link" href="{{ path('carrito') }}"><i id="badge" class="fas fa-shopping-cart" value={{cantidadProductos}}></i></a>
+                </li>
+                <li class="nav-item dropdown {% if seccionActual == "login" %} active {% endif %}">
                  <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                  <i class="fas fa-user"></i>

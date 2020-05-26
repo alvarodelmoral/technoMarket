@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+{% block titulo %}Pedido - {{ parent() }}{% endblock %}
+
+{% block sidebar %}
+   {{ render(path('menu', {seccionActual : "pedido"})) }} 
+{% endblock %}
+
+{% block body %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+    <li class="breadcrumb-item">Carrito</li>
+    <li class="breadcrumb-item active" aria-current="page">Pedido</li>
+  </ol>
+</nav>
+<div class = "container">
+  <h1> Últimos pasos </h1>
+<p>Para acabar de tramitar tu pedido con éxito deberás realizar una transferencia con los siguients datos:</p>
+ <ul>
+ <li>Nº de cuenta: {{numeroCuenta}}</li>
+ <li>Total: {{totalPagar}} €</li>
+ <li>Concepto: {{concepto}}</li>
+ </ul>
+</div>
+</br></br>
+</br></br>
+{% endblock %}

@@ -2,6 +2,10 @@ indice:
   path: /
   controller: App\Controller\Controller::indice
 
+menu:
+  path: /menu/{seccionActual}
+  controller: App\Controller\Controller::menu
+
 contacto:
   path: /contacto
   controller: App\Controller\Controller::contacto
@@ -25,6 +29,10 @@ carrito_añadir:
 carrito_borrar:
   path: /carrito/delete/{idCartContent}
   controller: App\Controller\CartController::removeAction
+
+pedido:
+  path: /pedido
+  controller: App\Controller\OrderController::addAction
 
 producto_nuevo:
   path: /productos/nuevo

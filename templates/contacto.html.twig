@@ -2,7 +2,7 @@
 {% block titulo %}Contacto - {{ parent() }}{% endblock %}
 
 {% block sidebar %}
-    {{ include('menu.html.twig', { 'seccionActual': "/contacto" }) }}
+    {{ render(path('menu', {seccionActual : "contacto"})) }} 
 {% endblock %}
 
 {% block body %}

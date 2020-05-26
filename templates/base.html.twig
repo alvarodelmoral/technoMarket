@@ -28,14 +28,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             {% block sidebar %}
-                {{ include('menu.html.twig', { 'seccionActual': "/" }) }}
-            {% endblock %}
-            <form class="form-inline mt-2 mt-md-0">
-             <div class="search">
-                <input class="form-control mr-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Buscar" aria-label="Buscar">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" for="busqueda">Buscar</button>
-                 </div>
-            </form>
+            {{ render(path('menu', {seccionActual : "indice"})) }} 
+           {% endblock %}
+           {% block busqueda %}
+           {% endblock %}
         </div>
     </nav>
 
@@ -54,32 +50,15 @@
     <div class="footer">
         <br>
         <div class="txtFooter">
-            <h3>¡Recibe los mejores descuentos!</h3>
+            <h4>¡Desde Techno Market le deseamos una buena compra y que disfrute de nuestros productos!</h4>
             <br>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                    </div>
-                    <div class="col">
-                        <form class="form-inline mt-2 mt-md-0">
-                            <input class="form-control mr-sm-2" type="email" placeholder="Correo electrónico"
-                                aria-label="Correo electrónico">
-                            <a data-toggle="modal" data-target="#myModal"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Enviar</button></a>
-                        </form>
-                    </div>
-                    <div class="col">
-                    </div>
-                </div>
-            </div>
-            <br>
-            <p>Puedes darte de baja en cualquier momento</p>
+            <p></p>
             <br>
         </div>
         <div class="pie">
             <br>
             <a href="/">| TECHNO MARKET © |</a>
             <a href="/contacto">CONTACTO |</a>
-            <a href="#">POLITICA DE PRIVACIDAD |</a>
             <a data-toggle="modal" data-target="#exampleModalLong">AVISO LEGAL |</a>
         </div>
     </div>
